@@ -1,4 +1,4 @@
-import { Component, computed, signal } from '@angular/core';
+import { Component, computed, signal, HostListener } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { routeIcons, userControlIcons } from '@assets'
 import { ButtonModule } from 'primeng/button'
@@ -15,14 +15,22 @@ import {
 import { SIDEBAR_EXPANDED } from './sidebar-expanded.token';
 
 
+const slideInOut = trigger('slideInOut', [
+  state('closed', style({ transform: 'translateX(-100%)', opacity: 0 })),
+  state('open',   style({ transform: 'translateX(0)',      opacity: 1 })),
+  transition('closed <=> open', animate('200ms ease-in-out')),
+]);
+
+const backdrop = trigger('backdrop', [
+  state('hidden',  style({ opacity: 0, visibility: 'hidden' })),
+  state('visible', style({ opacity: 1, visibility: 'visible' })),
+  transition('hidden <=> visible', animate('150ms ease-in-out')),
+]);
+
+
 @Component({
   selector: 'app-sidebar',
-  imports: [
-    RouterModule,
-    ButtonModule,
-    HoverableDirective,
-    NavLinkComponent,
-  ],
+  imports: [RouterModule, ButtonModule, HoverableDirective, NavLinkComponent],
   templateUrl: './sidebar.component.html',
   styleUrl: './sidebar.component.css',
   animations: [
@@ -39,19 +47,21 @@ import { SIDEBAR_EXPANDED } from './sidebar-expanded.token';
         animate('0.5s cubic-bezier(0.4, 0.0, 0.2, 1)'),
       ),
     ]),
+    slideInOut,
+    backdrop
   ],
   viewProviders: [
     {
       provide: SIDEBAR_EXPANDED,
       deps: [SidebarComponent],
-      useFactory: (sb: SidebarComponent) => sb.isSidebarExpanded.asReadonly()
-    }
-  ]
-
+      useFactory: (sb: SidebarComponent) => sb.isSidebarExpanded.asReadonly(),
+    },
+  ],
 })
 export class SidebarComponent {
   userIcons = userControlIcons;
   isSidebarExpanded = signal<boolean>(false);
+  readonly isMobileOpen = signal(false);
 
   sidebarState = computed(() =>
     this.isSidebarExpanded() ? 'expanded' : 'collapsed',
@@ -91,4 +101,24 @@ export class SidebarComponent {
   toggleSidebarState() {
     this.isSidebarExpanded.update((prev) => !prev);
   }
+
+  toggleMobile() {
+    this.isMobileOpen.update((v) => !v);
+    this.isSidebarExpanded.update((prev) => !prev);
+  }
+
+  closeMobile() {
+    this.isMobileOpen.set(false);
+    this.isSidebarExpanded.update((prev) => !prev);
+
+  }
+
+  @HostListener('window:resize')
+  onResize() {
+    if (window.innerWidth >= 1024) this.isMobileOpen.set(false);
+  }
+
+
 }
+
+

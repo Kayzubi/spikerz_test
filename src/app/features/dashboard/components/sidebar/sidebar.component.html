@@ -1,12 +1,85 @@
+<!-- Mobile: hamburger trigger (small screens only) -->
+<p-button
+  class="lg:hidden z-40"
+  icon="pi pi-bars"
+  [rounded]="true"
+  [text]="true"
+  aria-label="Open menu"
+  (onClick)="toggleMobile()"
+/>
+
+<!-- Mobile: dimmed backdrop -->
+@if (isMobileOpen()) {
+  <div
+    class="fixed inset-0 bg-black/40 z-40 lg:hidden"
+    role="button"
+    tabindex="0"
+    aria-label="Close menu"
+    (click)="closeMobile()"
+    [@backdrop]="isMobileOpen() ? 'visible' : 'hidden'"
+  ></div>
+}
+
+<!-- Mobile: slide-in drawer -->
 <aside
-  class="h-full shadow-lg rounded-r-2xl p-5 flex flex-col gap-5 relative"
+  class="fixed inset-y-0 left-0 z-50 w-72 bg-white shadow-lg p-5 flex flex-col gap-5 lg:hidden"
+  role="dialog"
+  aria-modal="true"
+  aria-label="Sidebar"
+  [@slideInOut]="isMobileOpen() ? 'open' : 'closed'"
+>
+  <div class="flex items-center justify-between mb-4">
+    <img src="assets/icons/logo.svg" alt="logo" />
+    <p-button
+      icon="pi pi-times"
+      [rounded]="true"
+      [text]="true"
+      aria-label="Close menu"
+      (onClick)="closeMobile()"
+    />
+  </div>
+
+  <nav class="flex-auto">
+    @for (link of navRoutes; track $index) {
+      <app-nav-link
+        [title]="link.title"
+        [icon]="link.icon"
+        routePath="/home"
+        (click)="closeMobile()"
+      />
+    }
+  </nav>
+
+  <div>
+    <div class="pb-2 border-b border-gray-300 mb-2">
+      <app-nav-link title="Lorem" [icon]="userIcons.settings" routePath="/home" (click)="closeMobile()" />
+      <app-nav-link title="Lorem" [icon]="userIcons.notifications" routePath="/home" (click)="closeMobile()" />
+    </div>
+    <div class="flex gap-2">
+      <img src="assets/icons/profile.svg" alt="user" />
+      <div class="flex-auto flex flex-col justify-center">
+        <p class="text-text-grey text-sm">Lorem</p>
+        <p class="text-text-grey text-sm">Lorem</p>
+      </div>
+      <p-button icon="pi pi-sign-in" [text]="true" [rounded]="true" severity="danger" (onClick)="closeMobile()" />
+    </div>
+  </div>
+</aside>
+
+<!-- Desktop: keep your existing sidebar exactly as you have it -->
+<aside
+  class="h-full shadow-lg rounded-r-2xl p-5 flex-col gap-5 relative hidden lg:flex"
   appHoverable
   #hover="hoverable"
   [@toggleSidebar]="sidebarState()"
 >
-<img src="assets/icons/logo.svg" alt="logo" [@sidebarOpenState]="sidebarState() === 'expanded' ? 'hidden' : 'visible'" class=" flex mx-auto" />
+  <img
+    src="assets/icons/logo.svg"
+    alt="logo"
+    [@sidebarOpenState]="sidebarState() === 'expanded' ? 'hidden' : 'visible'"
+    class="flex mx-auto"
+  />
   <nav class="flex-auto">
-
     @for (link of navRoutes; track $index) {
       <app-nav-link [title]="link.title" [icon]="link.icon" routePath="/home" />
     }
@@ -17,28 +90,29 @@
     class="absolute top-14 -right-3 text-lg"
     [size]="'small'"
     [@hoverReveal]="hover.hoverState()"
-  (onClick)="toggleSidebarState()"
+    (onClick)="toggleSidebarState()"
   />
   <div>
     <div class="pb-2 border-b border-gray-300 mb-2">
-      <app-nav-link
-        title="Lorem"
-        [icon]="userIcons.settings"
-        routePath="/home"
-      />
-      <app-nav-link
-        title="Lorem"
-        [icon]="userIcons.notifications"
-        routePath="/home"
-      />
+      <app-nav-link title="Lorem" [icon]="userIcons.settings" routePath="/home" />
+      <app-nav-link title="Lorem" [icon]="userIcons.notifications" routePath="/home" />
     </div>
-    <div class="flex gap-2 ">
-        <img src="assets/icons/profile.svg" alt="user">
-      <div class="flex-auto flex flex-col justify-center" [@sidebarOpenState]="sidebarState() === 'expanded' ? 'visible' : 'hidden'">
+    <div class="flex gap-2">
+      <img src="assets/icons/profile.svg" alt="user" />
+      <div
+        class="flex-auto flex flex-col justify-center"
+        [@sidebarOpenState]="sidebarState() === 'expanded' ? 'visible' : 'hidden'"
+      >
         <p class="text-text-grey text-sm">Lorem</p>
         <p class="text-text-grey text-sm">Lorem</p>
       </div>
-      <p-button icon="pi pi-sign-in" [text]="true" [rounded]="true"  severity="danger" [@sidebarOpenState]="sidebarState() === 'expanded' ? 'visible' : 'hidden'" />
+      <p-button
+        icon="pi pi-sign-in"
+        [text]="true"
+        [rounded]="true"
+        severity="danger"
+        [@sidebarOpenState]="sidebarState() === 'expanded' ? 'visible' : 'hidden'"
+      />
     </div>
   </div>
 </aside>
