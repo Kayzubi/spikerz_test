@@ -1,0 +1,10 @@
+<div class="flex items-center gap-1 capitalize">
+  <span
+    class="w-2 h-2 rounded-full flex"
+    [class.bg-red-700]="status() === 'critical' || status() === 'high'"
+    [class.bg-amber-500]="status() === 'medium'"
+    [class.bg-green-700]="status() === 'low'"
+  ></span>
+  <p>{{ total() }}</p>
+  <p>{{ status() }}</p>
+</div>

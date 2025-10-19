@@ -1,1 +1,40 @@
-/* You can add global styles to this file, and also import other style files */
+@import url('https://fonts.googleapis.com/css2?family=Public+Sans:ital,wght@0,100..900;1,100..900&display=swap');
+
+@import 'tailwindcss';
+@plugin "tailwindcss-primeui";
+
+@import "primeicons/primeicons.css";
+
+
+:root {
+  --background: #FAFAFA;
+  --text-grey: #525D73;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-text-grey: var(--text-grey);
+}
+
+@layer base {
+  body {
+    font-family: "Public Sans", sans-serif;
+    font-size: 0.875rem;
+  }
+}
+
+@layer utilities {
+
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+
+  .no-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+
+  .server-text {
+    @apply px-2 py-1 font-medium rounded-md w-max text-xs;
+  }
+}

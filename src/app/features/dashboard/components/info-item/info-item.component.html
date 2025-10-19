@@ -1,0 +1,11 @@
+<div [class]="'inline-flex gap-2 items-center'" [class.flex-col]="orientation() === 'vertical'" >
+  <div class="">
+    <img [src]="icon()" [alt]="title()" [class.w-10]="size() === 'small'">
+  </div>
+  <div class=" flex flex-col" [class.text-center]="orientation() === 'vertical'">
+    <p class=" mb-0 font-semibold">{{ title() }}</p>
+    @if (subTitle()) {
+      <small class=" text-text-grey/60">{{ subTitle() }}</small>
+    }
+  </div>
+</div>

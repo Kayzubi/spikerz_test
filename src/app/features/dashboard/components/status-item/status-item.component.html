@@ -1,0 +1,20 @@
+<div
+  class="flex items-center gap-2"
+  [class.text-green-700]="severity() === 'success'"
+  [class.text-red-600]="severity() === 'error'"
+  [class.text-amber-500]="severity() === 'warn'"
+>
+  <img
+    [src]="
+      severity() === 'error'
+        ? iconsPath + icons.shieldError
+        : severity() === 'warn'
+          ? iconsPath + icons.shieldWarn
+          : iconsPath + icons.shieldSuccess
+    "
+    [alt]="severity()"
+  />
+  <p class="font-semibold">
+    {{ message() }}
+  </p>
+</div>

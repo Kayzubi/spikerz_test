@@ -1,0 +1,44 @@
+<aside
+  class="h-full shadow-lg rounded-r-2xl p-5 flex flex-col gap-5 relative"
+  appHoverable
+  #hover="hoverable"
+  [@toggleSidebar]="sidebarState()"
+>
+<img src="assets/icons/logo.svg" alt="logo" [@sidebarOpenState]="sidebarState() === 'expanded' ? 'hidden' : 'visible'" class=" flex mx-auto" />
+  <nav class="flex-auto">
+
+    @for (link of navRoutes; track $index) {
+      <app-nav-link [title]="link.title" [icon]="link.icon" routePath="/home" />
+    }
+  </nav>
+  <p-button
+    [icon]="isSidebarExpanded() ? 'pi pi-angle-left' : 'pi pi-angle-right'"
+    [rounded]="true"
+    class="absolute top-14 -right-3 text-lg"
+    [size]="'small'"
+    [@hoverReveal]="hover.hoverState()"
+  (onClick)="toggleSidebarState()"
+  />
+  <div>
+    <div class="pb-2 border-b border-gray-300 mb-2">
+      <app-nav-link
+        title="Lorem"
+        [icon]="userIcons.settings"
+        routePath="/home"
+      />
+      <app-nav-link
+        title="Lorem"
+        [icon]="userIcons.notifications"
+        routePath="/home"
+      />
+    </div>
+    <div class="flex gap-2 ">
+        <img src="assets/icons/profile.svg" alt="user">
+      <div class="flex-auto flex flex-col justify-center" [@sidebarOpenState]="sidebarState() === 'expanded' ? 'visible' : 'hidden'">
+        <p class="text-text-grey text-sm">Lorem</p>
+        <p class="text-text-grey text-sm">Lorem</p>
+      </div>
+      <p-button icon="pi pi-sign-in" [text]="true" [rounded]="true"  severity="danger" [@sidebarOpenState]="sidebarState() === 'expanded' ? 'visible' : 'hidden'" />
+    </div>
+  </div>
+</aside>

@@ -1,0 +1,4 @@
+<a [routerLink]="routePath()" routerLinkActive="router-link-active" class=" h-10 flex items-center gap-3 text-text-grey w-full" [class.justify-center]="!isSidebarExpanded()">
+  <span><img [src]="sidebarIconsRoute + icon()" [alt]="title()" ></span>
+  <span [@sidebarOpen]="isSidebarExpanded() ? 'visible' : 'hidden'">{{ title() }}</span>
+</a>

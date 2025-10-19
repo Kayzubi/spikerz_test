@@ -1,0 +1,27 @@
+  <p-card class=" mb-5 p-4">
+    <h3 class=" font-bold mb-2 text-text-grey" >{{ title() }}</h3>
+    <p-accordion-panel [value]="value()"  >
+    <p-accordion-header class=" font-light" style="border: none;">
+      <div class="flex bg-background w-full gap-2 px-2 py-4">
+        <div class=" flex-1 grid place-items-center">
+          <app-info-item
+          [title]="infoTitle()"
+          [icon]="icon()"
+          orientation="horizontal"
+          subTitle="Server"
+          />
+        </div>
+        <span class=" w-[1px] bg-text-grey/50"></span>
+        <div class=" flex-1 grid place-items-center">
+
+          <p >
+            {{ primaryText() }}
+          </p>
+        </div>
+      </div>
+    </p-accordion-header>
+    <p-accordion-content style="border: none; box-shadow: none;"  >
+      <ng-content />
+    </p-accordion-content>
+  </p-accordion-panel>
+  </p-card>

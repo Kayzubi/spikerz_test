@@ -1,0 +1,9 @@
+<div appHoverable #hover="hoverable" class=" relative cursor-pointer">
+  <div class=" absolute -top-1 right-0 w-8 h-8">
+    <ng-content select="[badge]" />
+  </div>
+  <app-info-item [icon]="icon()" [title]="infoTitle()" [subTitle]="infoSubtitle()" orientation="vertical" />
+  <div [@hoverReveal]="hover.hoverState()" class=" absolute h-full w-full top-0 left-0 ">
+    <ng-content select="[tooltip]" />
+  </div>
+</div>
