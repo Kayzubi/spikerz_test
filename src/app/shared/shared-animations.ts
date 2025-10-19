@@ -5,8 +5,8 @@ export const hideAndRevealElement = (
   name: string, duration: string
 ) => {
   return trigger(name, [
-  state('hidden', style({ opacity: 0, visibility: 'hidden' })),
-  state('visible', style({ opacity: 1, visibility: 'visible' })),
+  state('hidden', style({ opacity: 0, visibility: 'hidden', display: 'none' })),
+  state('visible', style({ opacity: 1, visibility: 'visible', display: 'block' })),
   transition('hidden <=> visible', animate(duration))
 ])
 }

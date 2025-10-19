@@ -15,8 +15,6 @@ import {
 import { SIDEBAR_EXPANDED } from './sidebar-expanded.token';
 
 
-
-
 @Component({
   selector: 'app-sidebar',
   imports: [
