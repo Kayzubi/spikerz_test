@@ -15,6 +15,12 @@ export class HoverableDirective {
   }
   @HostListener('mouseleave') onLeave() {
     this.isHovered.set(false);
+  }
 
+  @HostListener('focusin') onFocusIn() {
+    this.isHovered.set(true);
+  }
+  @HostListener('focusout') onFocusOut() {
+    this.isHovered.set(false);
   }
 }

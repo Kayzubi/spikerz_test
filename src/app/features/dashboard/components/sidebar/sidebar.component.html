@@ -64,7 +64,7 @@
 </aside>
 
 <aside
-  class="h-full shadow-lg rounded-r-2xl p-5 flex-col gap-5 relative hidden lg:flex"
+  class="h-full shadow-lg rounded-r-2xl px-5 pt-8 pb-5 flex-col gap-5 relative hidden lg:flex"
   appHoverable
   #hover="hoverable"
   [@toggleSidebar]="sidebarState()"
@@ -75,6 +75,7 @@
     [@sidebarOpenState]="sidebarState() === 'expanded' ? 'hidden' : 'visible'"
     class="flex mx-auto"
   />
+
   <nav class="flex-auto">
     @for (link of navRoutes; track $index) {
       <app-nav-link [title]="link.title" [icon]="link.icon" routePath="/home" />
