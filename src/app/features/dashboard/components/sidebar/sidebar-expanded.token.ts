@@ -1,4 +1,3 @@
-// sidebar-expanded.token.ts
 import { InjectionToken, Signal } from '@angular/core';
 
 export const SIDEBAR_EXPANDED = new InjectionToken<Signal<boolean>>(

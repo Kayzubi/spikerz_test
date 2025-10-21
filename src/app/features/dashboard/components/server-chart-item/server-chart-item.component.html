@@ -3,7 +3,7 @@
     <ng-content select="[badge]" />
   </div>
   <app-info-item [icon]="icon()" [title]="infoTitle()" [subTitle]="infoSubtitle()" orientation="vertical" />
-  <div [@hoverReveal]="hover.hoverState()" class=" absolute h-full w-full top-0 left-0 ">
+  <div [@hoverReveal]="hover.hoverState()" class=" absolute h-full w-full top-0 left-0 hidden ">
     <ng-content select="[tooltip]" />
   </div>
 </div>
