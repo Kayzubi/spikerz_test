@@ -7,7 +7,7 @@
     <div class=" grid grid-cols-3 flex-auto mb-10 md:mb-0">
       <div  class=" server-item-wrapper">
         <app-server-chart-item infoTitle="LoremIpsum" [icon]="chartIconsRoute + icons.incognito">
-          <img badge [src]="chartIconsRoute + icons.incognitoBadge" />
+          <img badge [src]="chartIconsRoute + icons.incognitoBadge" alt="badge"/>
           <app-vulnerability-tooltip tooltip/>
         </app-server-chart-item>
       </div>
@@ -27,13 +27,13 @@
     <div class=" md:w-3/12 grid grid-cols-2 md:grid-cols-1">
      <div class=" server-item-wrapper">
         <app-server-chart-item infoTitle="LoremIpsum" infoSubtitle="192.168.1" [icon]="chartIconsRoute + icons.server">
-          <img badge [src]="chartIconsRoute + icons.shieldError" class="w-5"/>
+          <img badge [src]="chartIconsRoute + icons.shieldError" class="w-5" alt="badge"/>
           <app-sever-info-tooltip tooltip />
         </app-server-chart-item>
      </div>
      <div  class=" server-item-wrapper">
          <app-server-chart-item infoTitle="LoremIpsum" infoSubtitle="192.168.1" [icon]="chartIconsRoute + icons.server">
-          <img badge [src]="chartIconsRoute + icons.shieldError" class="w-5"/>
+          <img badge [src]="chartIconsRoute + icons.shieldError" class="w-5" alt="badge"/>
           <app-sever-info-tooltip tooltip />
         </app-server-chart-item>
      </div>
