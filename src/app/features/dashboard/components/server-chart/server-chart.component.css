@@ -1,0 +1,3 @@
+.server-item-wrapper {
+  @apply grid place-items-center;
+}

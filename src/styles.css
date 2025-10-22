@@ -8,7 +8,7 @@
 
 :root {
   --background: #FAFAFA;
-  --text-grey: #525D73;
+  --text-grey: #909193;
 }
 
 @theme inline {
@@ -36,5 +36,9 @@
 
   .server-text {
     @apply px-2 py-1 font-medium rounded-md w-max text-xs;
+  }
+
+  .heading_primary {
+    @apply text-green-700 font-bold text-lg 2xl:text-xl mb-3;
   }
 }

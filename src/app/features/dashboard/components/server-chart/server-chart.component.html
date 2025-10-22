@@ -1,29 +1,42 @@
-<h2 class="text-green-700 font-bold text-lg mb-3">Lorem Lorem Lorem</h2>
+<h2 class="heading_primary">Lorem Lorem Lorem</h2>
 
 <div class="flex flex-col bg-background rounded-3xl px-4">
 
-  <div class="py-10 flex gap-5 flex-col md:flex-row h-80">
-    <div class=" flex justify-around items-center flex-auto">
-      <app-server-chart-item infoTitle="LoremIpsum" [icon]="chartIconsRoute + icons.incognito">
-        <img badge [src]="chartIconsRoute + icons.incognitoBadge" />
-        <app-vulnerability-tooltip tooltip/>
-      </app-server-chart-item>
-      <app-server-chart-item infoTitle="LoremIpsum" [icon]="chartIconsRoute + icons.server">
-        <app-sever-info-tooltip tooltip />
-      </app-server-chart-item>
-      <app-server-chart-item infoTitle="LoremIpsum" [icon]="chartIconsRoute + icons.server">
-        <app-sever-info-tooltip tooltip />
-      </app-server-chart-item>
+  <div class="py-10 flex gap-5 flex-col md:flex-row min-h-80">
+    <!-- Horizontal chart items -->
+    <div class=" grid grid-cols-3 flex-auto mb-10 md:mb-0">
+      <div  class=" server-item-wrapper">
+        <app-server-chart-item infoTitle="LoremIpsum" [icon]="chartIconsRoute + icons.incognito">
+          <img badge [src]="chartIconsRoute + icons.incognitoBadge" />
+          <app-vulnerability-tooltip tooltip/>
+        </app-server-chart-item>
+      </div>
+     <div  class=" server-item-wrapper">
+        <app-server-chart-item infoTitle="LoremIpsum" [icon]="chartIconsRoute + icons.server">
+          <app-sever-info-tooltip tooltip />
+        </app-server-chart-item>
+     </div>
+      <div  class=" server-item-wrapper">
+        <app-server-chart-item infoTitle="LoremIpsum" [icon]="chartIconsRoute + icons.server">
+          <app-sever-info-tooltip tooltip />
+        </app-server-chart-item>
+      </div>
     </div>
-    <div class=" md:w-3/12 flex justify-center md:flex-col md:justify-between md:items-center ">
-      <app-server-chart-item infoTitle="LoremIpsum" infoSubtitle="192.168.1" [icon]="chartIconsRoute + icons.server">
-        <img badge [src]="chartIconsRoute + icons.shieldError" class="w-5"/>
-        <app-sever-info-tooltip tooltip />
-      </app-server-chart-item>
-       <app-server-chart-item infoTitle="LoremIpsum" infoSubtitle="192.168.1" [icon]="chartIconsRoute + icons.server">
-        <img badge [src]="chartIconsRoute + icons.shieldError" class="w-5"/>
-        <app-sever-info-tooltip tooltip />
-      </app-server-chart-item>
+
+    <!-- vertical chart items -->
+    <div class=" md:w-3/12 grid grid-cols-2 md:grid-cols-1">
+     <div class=" server-item-wrapper">
+        <app-server-chart-item infoTitle="LoremIpsum" infoSubtitle="192.168.1" [icon]="chartIconsRoute + icons.server">
+          <img badge [src]="chartIconsRoute + icons.shieldError" class="w-5"/>
+          <app-sever-info-tooltip tooltip />
+        </app-server-chart-item>
+     </div>
+     <div  class=" server-item-wrapper">
+         <app-server-chart-item infoTitle="LoremIpsum" infoSubtitle="192.168.1" [icon]="chartIconsRoute + icons.server">
+          <img badge [src]="chartIconsRoute + icons.shieldError" class="w-5"/>
+          <app-sever-info-tooltip tooltip />
+        </app-server-chart-item>
+     </div>
     </div>
   </div>
   <div class=" py-5 px-3 border-t border-t-text-grey/20 flex items-center gap-4 flex-wrap" >
